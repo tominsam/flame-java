@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Tue Jun 13 23:06:02 BST 2006
+onejar.license.required=false
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=/home/tomi/JFlame.jar
+manifest.mergeall=true
+manifest.mainclass=jflame.Main
+manifest.file=<createnew>
+jarname.isextern=true
+onejar.expand=
+excludes=<po|JmDNS>~samples/;<po|JmDNS>~com/
+includes=
