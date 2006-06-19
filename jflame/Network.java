@@ -2,13 +2,11 @@ package jflame;
 
 import java.io.IOException;
 import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Vector;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import javax.jmdns.*;
 
 interface ServiceWatcher {
@@ -69,7 +67,7 @@ class Host {
 
 public class Network implements ServiceListener, ServiceTypeListener {
     
-    JmDNS jmdns;
+	Vector resolvers;
     HashMap hosts;
     HashMap services;
     ServiceWatcher watcher;
@@ -77,16 +75,12 @@ public class Network implements ServiceListener, ServiceTypeListener {
     /** Creates a new instance of Network */
     public Network( ServiceWatcher w ) throws IOException {
 
+        resolvers = new Vector();
     	hosts = new HashMap();
-        watcher = w;
-        
         services = new HashMap();
-        
-        //this.jmdns = new JmDNS( InetAddress.getByName("10.20.30.202") );
-        this.jmdns = new JmDNS();
-        jmdns.addServiceTypeListener(this);
-        
-       
+
+        watcher = w;
+
         // register some well known types. This is just for faster startup
         // - we discover all types on the network given time.
         String list[] = new String[] {
@@ -103,9 +97,26 @@ public class Network implements ServiceListener, ServiceTypeListener {
             "_presence._tcp.local."
         };
         
-        for (int i = 0 ; i < list.length ; i++) {
-            jmdns.registerServiceType(list[i]);
+
+        Enumeration e = NetworkInterface.getNetworkInterfaces();
+        while (e.hasMoreElements()) {
+        	NetworkInterface interf = (NetworkInterface)e.nextElement();
+        	System.out.println("listening on "+ interf.getDisplayName() );
+        	Enumeration addresses = interf.getInetAddresses();
+        	if (!interf.getName().equals("lo") && addresses.hasMoreElements()) {
+	        	InetAddress address = (InetAddress)addresses.nextElement();
+	        	JmDNS jmdns = new JmDNS( address );
+	            jmdns.addServiceTypeListener(this);
+
+	            for (int i = 0 ; i < list.length ; i++) {
+	                jmdns.registerServiceType(list[i]);
+	            }
+
+	            resolvers.addElement( jmdns );
+        	}
         }
+        
+       
         
         //ServiceInfo flameService = new ServiceInfo("_flame._tcp.", "JFlame", 1812, "");
         //jmdns.registerService( flameService );
@@ -115,7 +126,7 @@ public class Network implements ServiceListener, ServiceTypeListener {
         String servicekey = e.getInfo().getServer() + e.getType() + e.getName();
         if (services.containsKey(servicekey)) return;
         System.out.println("new service "+servicekey);
-        String hostkey = e.getInfo().getServer();
+        String hostkey = e.getInfo().getHostAddress();
         System.out.println( "hostkey is "+hostkey );
         Host host;
         if (hosts.containsKey(hostkey)) {
@@ -157,7 +168,7 @@ public class Network implements ServiceListener, ServiceTypeListener {
     public void serviceTypeAdded(ServiceEvent event) {
         final String type = event.getType();
         System.out.println( "new type "+type);
-        jmdns.addServiceListener( type, this );
+        event.getDNS().addServiceListener( type, this );
     }
     
     public void serviceAdded(ServiceEvent event) {
