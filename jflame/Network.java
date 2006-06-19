@@ -112,7 +112,7 @@ public class Network implements ServiceListener, ServiceTypeListener {
 	                jmdns.registerServiceType(list[i]);
 	            }
 
-	            resolvers.addElement( jmdns );
+	            resolvers.add( jmdns );
         	}
         }
         
@@ -152,7 +152,7 @@ public class Network implements ServiceListener, ServiceTypeListener {
         while (i.hasNext()) {
             Service s = (Service)i.next();
             if (s.address().equals( h.address() ))
-            	v.addElement( s );
+            	v.add( s );
         }
     }
 
