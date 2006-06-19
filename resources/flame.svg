@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://web.resource.org/cc/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://inkscape.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.43"
+   sodipodi:docbase="/home/tomi/svn/Projects/JFlame/resources"
+   sodipodi:docname="flame.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="319.28559"
+     inkscape:cy="530.20941"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     inkscape:window-width="1280"
+     inkscape:window-height="681"
+     inkscape:window-x="0"
+     inkscape:window-y="25" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <image
+       id="image1350"
+       height="1022.2858"
+       width="1022.2858"
+       sodipodi:absref="/home/tomi/svn/Projects/Flame/flame_128x128.png"
+       xlink:href="/home/tomi/svn/Projects/Flame/flame_128x128.png"
+       x="-101.14283"
+       y="34.076469"
+       style="opacity:0.51381215"
+       inkscape:export-xdpi="52.82"
+       inkscape:export-ydpi="52.82" />
+    <path
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 380 226.65625 C 337.15144 310.92508 387.11668 298.09454 384.28125 402.3125 C 383.87447 400.79625 370.28616 352.22823 298.59375 342.375 C 299.97424 343.09529 344.03124 367.06251 328.5625 482.375 C 297.62499 443 269.46648 440.99037 268.59375 440.9375 C 269.05433 441.66678 298.45536 488.62053 284.28125 556.65625 C 259.99554 528.08483 220 522.375 220 522.375 C 245.71429 553.80358 240.00446 553.80357 255.71875 602.375 C 294.44115 722.06236 382.84821 713.78571 388.5625 709.5 C 367.13392 655.21426 297.15625 606.65625 297.15625 606.65625 C 325.28125 600.79688 339.94973 616.06622 344.3125 621.75 C 329.06439 598.02136 337.15625 549.5 337.15625 549.5 C 348.58483 599.49997 384.28125 632.375 384.28125 632.375 C 358.51674 532.02901 377.81854 516.61404 379.84375 516.53125 C 379.87473 516.53194 379.91629 516.55398 379.9375 516.5625 C 379.94684 516.56769 379.96199 516.58676 379.96875 516.59375 C 379.97419 516.60162 379.99724 516.61545 380 516.625 C 380.00069 516.63018 380 516.65067 380 516.65625 C 379.83555 517.48676 374.84375 544.34375 410 579.5 C 410 579.49997 421.4375 512.35714 401.4375 469.5 C 401.43751 469.5 444.12655 482.31665 435.78125 610.15625 C 436.4037 604.84171 441.27232 574.04464 470 576.65625 C 470 576.65626 454.28571 599.5 460 619.5 C 460 619.49997 471.41518 639.51339 492.84375 586.65625 C 492.84374 586.65626 518.58482 642.35714 457.15625 709.5 C 457.15626 709.49997 612.86607 670.94643 581.4375 512.375 C 581.43748 512.375 572.85268 562.37053 544.28125 566.65625 C 544.28125 566.65626 587.15625 470.92411 547.15625 413.78125 C 547.15623 413.78126 531.41519 499.49107 492.84375 508.0625 C 492.84374 508.06249 515.7009 382.37053 462.84375 356.65625 C 462.84374 356.65626 475.72767 448.07143 437.15625 459.5 C 468.58483 315.21429 372.85714 322.37053 380 226.65625 z M 405.71875 369.5 C 441.84716 432.71176 413.11791 448.10885 408.5625 448.0625 C 399.47724 448.64341 390.32475 409.98599 405.71875 369.5 z M 344.75 622.40625 C 345.00655 622.78656 345.26192 623.16489 345.53125 623.53125 C 345.37813 623.29259 345.11663 622.90947 344.75 622.40625 z "
+       id="path1353"
+       inkscape:export-filename="/home/tomi/path2230.png"
+       inkscape:export-xdpi="12.57"
+       inkscape:export-ydpi="12.57" />
+    <path
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 274.28571,743.79075 L 577.14286,715.21933 L 580,743.79075 L 275.71429,769.50504 L 274.28571,743.79075 z "
+       id="path2230"
+       inkscape:export-xdpi="12.57"
+       inkscape:export-ydpi="12.57" />
+  </g>
+</svg>
