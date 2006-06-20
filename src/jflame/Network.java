@@ -20,25 +20,25 @@ class Service {
     public Service( ServiceEvent e ) {
         event = e;
     }
-
+    
     public String name() {
-		return event.getName();
-	}
-
-    public String address() {
-    	return event.getInfo().getHostAddress();
+        return event.getName();
     }
-	
-	public String info() {
-		return event.getInfo().getTextString();
-	}
-	
-	public String type() {
-		return event.getType();
-	}
-	public int port() {
-		return event.getInfo().getPort();
-	}
+    
+    public String address() {
+        return event.getInfo().getHostAddress();
+    }
+    
+    public String info() {
+        return event.getInfo().getTextString();
+    }
+    
+    public String type() {
+        return event.getType();
+    }
+    public int port() {
+        return event.getInfo().getPort();
+    }
 }
 
 class Host {
@@ -46,41 +46,41 @@ class Host {
     private Vector services;
     
     public Host( ServiceEvent e ) {
-    	event = e;
-    	services = new Vector();
+        event = e;
+        services = new Vector();
     }
-
+    
     public Vector services() {
-    	return services;
+        return services;
     }
     public String name() {
-    	return event.getInfo().getServer();
+        return event.getInfo().getServer();
     }
     public String address() {
-    	return event.getInfo().getHostAddress();
+        return event.getInfo().getHostAddress();
     }
-
-	public String url() {
-		return event.getInfo().getURL();
-	}
+    
+    public String url() {
+        return event.getInfo().getURL();
+    }
 }
 
 public class Network implements ServiceListener, ServiceTypeListener {
     
-	Vector resolvers;
+    Vector resolvers;
     HashMap hosts;
     HashMap services;
     ServiceWatcher watcher;
     
     /** Creates a new instance of Network */
     public Network( ServiceWatcher w ) throws IOException {
-
+        
         resolvers = new Vector();
-    	hosts = new HashMap();
+        hosts = new HashMap();
         services = new HashMap();
-
+        
         watcher = w;
-
+        
         // register some well known types. This is just for faster startup
         // - we discover all types on the network given time.
         String list[] = new String[] {
@@ -97,26 +97,26 @@ public class Network implements ServiceListener, ServiceTypeListener {
             "_presence._tcp.local."
         };
         
-
+        
         Enumeration e = NetworkInterface.getNetworkInterfaces();
         while (e.hasMoreElements()) {
-        	NetworkInterface interf = (NetworkInterface)e.nextElement();
-        	System.out.println("listening on "+ interf.getDisplayName() );
-        	Enumeration addresses = interf.getInetAddresses();
-        	if (!interf.getName().equals("lo") && addresses.hasMoreElements()) {
-	        	InetAddress address = (InetAddress)addresses.nextElement();
-	        	JmDNS jmdns = new JmDNS( address );
-	            jmdns.addServiceTypeListener(this);
-
-	            for (int i = 0 ; i < list.length ; i++) {
-	                jmdns.registerServiceType(list[i]);
-	            }
-
-	            resolvers.add( jmdns );
-        	}
+            NetworkInterface interf = (NetworkInterface)e.nextElement();
+            System.out.println("listening on "+ interf.getDisplayName() );
+            Enumeration addresses = interf.getInetAddresses();
+            if (!interf.getName().equals("lo") && addresses.hasMoreElements()) {
+                InetAddress address = (InetAddress)addresses.nextElement();
+                JmDNS jmdns = new JmDNS( address );
+                jmdns.addServiceTypeListener(this);
+                
+                for (int i = 0 ; i < list.length ; i++) {
+                    jmdns.registerServiceType(list[i]);
+                }
+                
+                resolvers.add( jmdns );
+            }
         }
         
-       
+        
         
         //ServiceInfo flameService = new ServiceInfo("_flame._tcp.", "JFlame", 1812, "");
         //jmdns.registerService( flameService );
@@ -130,32 +130,32 @@ public class Network implements ServiceListener, ServiceTypeListener {
         System.out.println( "hostkey is "+hostkey );
         Host host;
         if (hosts.containsKey(hostkey)) {
-        	System.out.println("using existing host");
-        	host = (Host)hosts.get(hostkey);
+            System.out.println("using existing host");
+            host = (Host)hosts.get(hostkey);
         } else {
-        	System.out.println("Host is new");
-        	host = new Host( e );
-        	hosts.put(hostkey, host);
+            System.out.println("Host is new");
+            host = new Host( e );
+            hosts.put(hostkey, host);
         }
         Service service = new Service(e);
         services.put( servicekey, service );
         servicesForHost(host);
         watcher.serviceAdded( this, service );
     }
-
+    
     public void servicesForHost( Host h ) {
-    	// TODO - don't be so destructive to this list
-    	// just add new things, and remove missing things
-    	Vector v = h.services();
-    	v.removeAllElements();
+        // TODO - don't be so destructive to this list
+        // just add new things, and remove missing things
+        Vector v = h.services();
+        v.removeAllElements();
         Iterator i = services.values().iterator();
         while (i.hasNext()) {
             Service s = (Service)i.next();
             if (s.address().equals( h.address() ))
-            	v.add( s );
+                v.add( s );
         }
     }
-
+    
     public synchronized void removeService( ServiceEvent e ) {
         String key = e.getInfo().getHostAddress() + e.getType() + e.getName();
         if (! services.containsKey(key)) return;
