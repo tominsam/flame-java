@@ -118,22 +118,22 @@ public class Network implements ServiceListener, ServiceTypeListener {
         
         
         
-        //ServiceInfo flameService = new ServiceInfo("_flame._tcp.", "JFlame", 1812, "");
+        //ServiceInfo flameService = new ServiceInfo("_flame._tcp.", "JFlame", 0, "");
         //jmdns.registerService( flameService );
     }
     
     public synchronized void addService( ServiceEvent e ) {
         String servicekey = e.getInfo().getServer() + e.getType() + e.getName();
         if (services.containsKey(servicekey)) return;
-        System.out.println("new service "+servicekey);
+        System.out.println(">> new service "+servicekey);
         String hostkey = e.getInfo().getHostAddress();
-        System.out.println( "hostkey is "+hostkey );
+        System.out.println( "   hostkey is "+hostkey );
         Host host;
         if (hosts.containsKey(hostkey)) {
-            System.out.println("using existing host");
+            System.out.println("-- using existing host");
             host = (Host)hosts.get(hostkey);
         } else {
-            System.out.println("Host is new");
+            System.out.println("** Host is new");
             host = new Host( e );
             hosts.put(hostkey, host);
         }

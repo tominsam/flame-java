@@ -1,3 +1,6 @@
+/*
+ * The GUI class handles the user interface. Shock.
+ */
 package jflame;
 
 import java.util.Iterator;
@@ -123,7 +126,7 @@ public class GUI extends JFrame implements ListSelectionListener, ServiceWatcher
         updateHosts(n);
     }
     
-    public void updateHosts( Network n ) {
+    public synchronized void updateHosts( Network n ) {
         // remove hosts that are gone
         hostModel.data.retainAll( n.hosts.values() );
         
