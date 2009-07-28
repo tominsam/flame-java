@@ -105,13 +105,11 @@ public class Network implements ServiceListener, ServiceTypeListener {
             Enumeration addresses = interf.getInetAddresses();
             if (!interf.getName().equals("lo") && addresses.hasMoreElements()) {
                 InetAddress address = (InetAddress)addresses.nextElement();
-                JmDNS jmdns = new JmDNS( address );
+                JmDNS jmdns = JmDNS.create( address );
                 jmdns.addServiceTypeListener(this);
-                
                 for (int i = 0 ; i < list.length ; i++) {
                     jmdns.registerServiceType(list[i]);
                 }
-                
                 resolvers.add( jmdns );
             }
         }
